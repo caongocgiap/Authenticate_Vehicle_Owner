@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <div style="width: 100%">
+        <blockquote class="blockquote text-center">
+            <p class="mb-0 font_title">Welcome to the Smart Vehicle Ownership Information Verification website</p>
+            <!-- <footer class="blockquote-footer font_text">Please choose 1 of the 3 functions below</footer> -->
+            <p id="addressAccount"></p>
+        </blockquote>
+        <div class="d-flex justify-content-around mt-5">
+            <div class="card text-center card_info" style="width: 400px;">
+                <div class="card-body">
+                    <h5 class="card-title font_title">Personal Information</h5>
+                    <p class="card-text font_text">Register your personal information by clicking the button below</p>
+                    <a href="SetOwnerInfo.html" class="btn btn-primary btn_page">Register now</a>
+                </div>
+            </div>
+            <div class="card text-center card_info" style="width: 400px;">
+                <div class="card-body">
+                    <h5 class="card-title font_title">Vehicle Information</h5>
+                    <p class="card-text font_text">Register your vehicle information by clicking the button below</p>
+                    <a href="#" class="btn btn-primary btn_page">Register now</a>
+                </div>
+            </div>
+            <div class="card text-center card_info" style="width: 400px;">
+                <div class="card-body">
+                    <h5 class="card-title font_title">Register Ownership</h5>
+                    <p class="card-text font_text">Create a smart contract that certifies ownership of your vehicle</p>
+                    <a href="RegisterVehicleOwnership.html" class="btn btn-primary btn_page">Register now</a>
+                </div>
+            </div>
+            <div class="card text-center card_info" style="width: 400px;">
+                <div class="card-body">
+                    <h5 class="card-title font_title">Information Query</h5>
+                    <p class="card-text font_text">See registered vehicle details and vehicle owner information here</p>
+                    <a href="#" class="btn btn-primary btn_page">See now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../BE/connect.js"></script>
+    <script>
+        const connectedAccount = localStorage.getItem("connectedAccount");
+        if (connectedAccount) {
+            addressAccount.innerHTML = "Connected to: " + connectedAccount;
+        } else {
+            addressAccount.innerHTML = "Not connected to any account.";
+        }
+    </script>
+</body>
+
+</html>

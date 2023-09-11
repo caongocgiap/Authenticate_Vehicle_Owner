@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Xác thực quyền sở hữu phương tiện giao thông</title>
+    <style>
+        .form_login {
+            background-color: #1d1d1d;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.5);
+        }
+
+        button {
+            background-color: #ff6600;
+            color: #1d1d1d;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+
+    <div class="form_login">
+        <h1>Xác thực giấy phép lái xe</h1>
+        <button onclick="connectMetamask()">Kết nối ví MetaMask</button>
+        <p style="color: #ff6600;">Vui lòng kết nối ví của bạn để tiếp tục</p>
+    </div>
+
+    <script src="../BE/connect.js"></script>
+    <script>
+        // 1. connect metamask
+        let account;
+        const connectMetamask = async () => {
+            if (window.ethereum !== "undefined") {
+                const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+                account = accounts[0];
+                localStorage.setItem("connectedAccount", account);
+                window.location.replace('Home.html');
+            }
+        }
+    </script>
+</body>
+
+</html>
