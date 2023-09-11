@@ -43,6 +43,12 @@
             </div>
         </form>
     </div>
+    <div class="Notification">
+        <h1 class="font_title">Notification</h1>
+        <p class="font_text" id="p_notification" style="font-size: 18px"></p>
+        <p class="font_text" id="p_txHash" style="font-size: 18px"></p>
+        <button id="ok_notification" class="btn_page mt-5" style="color: #FFF" type="button">OK</button>
+    </div>
 
     <script src="../BE/connect.js"></script>
     <script>
@@ -58,29 +64,18 @@
         } else {
             addressAccount.innerHTML = "Not connected to any account.";
         }
-        // contract.methods.Register_Vehicle(connectedAccount).call()
-        //     .then(result => {
-        //         licensePlateValue.innerHTML = result[1];
-        //         nameValue.innerHTML = result[2];
-        //         dateValue.innerHTML = result[3];
-        //         nationalValue.innerHTML = result[4];
-        //         addressValue.innerHTML = result[5];
-        //     })
-        //     .catch(error => {
-        //         alert('Lỗi: ' + error);
-        //     });
-        async function getInforRegister(string) {
-            const result = await contract.methods.Register_Vehicle(connectedAccount).call();
-            return result;
-        }
 
-        getInforRegister(connectedAccount).then((result) => {
-            licensePlateValue.innerHTML = result.licensePlate;
-            nameValue.innerHTML = result.fullName;
-            dateValue.innerHTML = result.dateOfBirth;
-            nationalValue.innerHTML = result.nationality;
-            addressValue.innerHTML = result.Address;
-        })
+        contract.methods.Register_Vehicle(connectedAccount).call()
+            .then(result => {
+                licensePlateValue.innerHTML = result[0];
+                nameValue.innerHTML = result[1];
+                dateValue.innerHTML = result[2];
+                nationalValue.innerHTML = result[3];
+                addressValue.innerHTML = result[4];
+            })
+            .catch(error => {
+                alert('Lỗi: ' + error);
+            });
     </script>
 </body>
 

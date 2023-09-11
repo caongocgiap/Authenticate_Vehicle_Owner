@@ -69,3 +69,17 @@ body {
     font-size: 20px;
 }
 
+.Notification {
+    min-width: 500px;
+    min-height: 300px;
+    background-color: #1d1d1d;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.5);
+    text-align: center;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

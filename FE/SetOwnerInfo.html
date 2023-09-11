@@ -25,7 +25,7 @@
                 <input class="input_group" type="text" id="name" />
             </div>
             <div class="d-flex flex-column mt-3">
-                <label>Sex</label>
+                <label>Nationality</label>
                 <input class="input_group" type="text" id="sex" />
             </div>
             <div class="d-flex flex-column mt-3">
@@ -40,9 +40,15 @@
                 <a href="Home.html" class="btn btn-secondary btn-lg btn_page mr-5"
                     style="width: 200px; opacity: 0.6">Back</a>
                 <button type="button" onclick="setOwner()" class="btn btn-primary btn-lg btn_page"
-                    style="width: 200px">Authentication</button>
+                    style="width: 200px">Confirm</button>
             </div>
         </form>
+    </div>
+    <div class="Notification">
+        <h1 class="font_title">Notification</h1>
+        <p class="font_text" id="p_notification" style="font-size: 18px"></p>
+        <p class="font_text" id="p_txHash" style="font-size: 18px"></p>
+        <button id="ok_notification" class="btn_page mt-5" style="color: #FFF" type="button">OK</button>
     </div>
     <script src="../BE/connect.js"></script>
     <script>
@@ -65,7 +71,9 @@
                 if (error) {
                     alert('Lỗi: ' + error);
                 } else {
-                    alert('Personal information was successfully authenticated!\nTrading code: ' + txHash);
+                    document.querySelector('.Notification').style.display = "block";
+                    document.querySelector('#p_notification').innerHTML = 'User information has been successfully registered';
+                    document.querySelector('#p_txHash').innerHTML = 'TxHash:\n' + txHash;
                     // window.location.replace("Querry.html");
                 }
             });

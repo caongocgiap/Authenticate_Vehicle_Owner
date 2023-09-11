@@ -1,4 +1,5 @@
 let addressAccount = document.querySelector('#addressAccount');
+let btn_okNotification = document.querySelector('#ok_notification');
 
 // 2. connect to sport contract
 const connectContract = async () => {
@@ -165,7 +166,7 @@ const connectContract = async () => {
                 },
                 {
                     "internalType": "string",
-                    "name": "sex",
+                    "name": "nationality",
                     "type": "string"
                 },
                 {
@@ -192,11 +193,6 @@ const connectContract = async () => {
             ],
             "name": "Register_Vehicle",
             "outputs": [
-                {
-                    "internalType": "address",
-                    "name": "idOwner",
-                    "type": "address"
-                },
                 {
                     "internalType": "string",
                     "name": "licensePlate",
@@ -229,9 +225,9 @@ const connectContract = async () => {
         {
             "inputs": [
                 {
-                    "internalType": "string",
+                    "internalType": "address",
                     "name": "",
-                    "type": "string"
+                    "type": "address"
                 }
             ],
             "name": "Vehicle_Information",
@@ -248,11 +244,6 @@ const connectContract = async () => {
                 },
                 {
                     "internalType": "string",
-                    "name": "model",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
                     "name": "brand",
                     "type": "string"
                 },
@@ -270,10 +261,37 @@ const connectContract = async () => {
                     "internalType": "uint256",
                     "name": "capacity",
                     "type": "uint256"
-                },
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_idOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "createContract",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_idOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "getAddress",
+            "outputs": [
                 {
                     "internalType": "string",
-                    "name": "status",
+                    "name": "",
                     "type": "string"
                 }
             ],
@@ -288,31 +306,11 @@ const connectContract = async () => {
                     "type": "address"
                 }
             ],
-            "name": "getOwnerInfo",
+            "name": "getDateOfBirth",
             "outputs": [
                 {
                     "internalType": "string",
-                    "name": "cccd",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "sex",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "birthday",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "Address",
+                    "name": "",
                     "type": "string"
                 }
             ],
@@ -321,52 +319,17 @@ const connectContract = async () => {
         },
         {
             "inputs": [
-                {
-                    "internalType": "string",
-                    "name": "_licensePlate",
-                    "type": "string"
-                }
-            ],
-            "name": "getVehicleInfo",
-            "outputs": [
                 {
                     "internalType": "address",
-                    "name": "owner",
+                    "name": "_idOwner",
                     "type": "address"
-                },
+                }
+            ],
+            "name": "getLicensePlate",
+            "outputs": [
                 {
                     "internalType": "string",
-                    "name": "licensePlate",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "model",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "brand",
-                    "type": "string"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "year",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "string",
-                    "name": "color",
-                    "type": "string"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "capacity",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "string",
-                    "name": "status",
+                    "name": "",
                     "type": "string"
                 }
             ],
@@ -376,13 +339,59 @@ const connectContract = async () => {
         {
             "inputs": [
                 {
+                    "internalType": "address",
+                    "name": "_idOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "getName",
+            "outputs": [
+                {
                     "internalType": "string",
-                    "name": "_licensePlate",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_idOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "getNationality",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_idOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "getRigester",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "_licensePlatee",
                     "type": "string"
                 },
                 {
                     "internalType": "string",
-                    "name": "_fullName",
+                    "name": "_name",
                     "type": "string"
                 },
                 {
@@ -397,8 +406,39 @@ const connectContract = async () => {
                 },
                 {
                     "internalType": "string",
-                    "name": "_address",
+                    "name": "_Address",
                     "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_licensePlate",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_brand",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_year",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_color",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_capacity",
+                    "type": "uint256"
                 }
             ],
             "name": "registerVehicle",
@@ -420,7 +460,7 @@ const connectContract = async () => {
                 },
                 {
                     "internalType": "string",
-                    "name": "_sex",
+                    "name": "_nationality",
                     "type": "string"
                 },
                 {
@@ -448,11 +488,6 @@ const connectContract = async () => {
                 },
                 {
                     "internalType": "string",
-                    "name": "_model",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
                     "name": "_brand",
                     "type": "string"
                 },
@@ -470,11 +505,6 @@ const connectContract = async () => {
                     "internalType": "uint256",
                     "name": "_capacity",
                     "type": "uint256"
-                },
-                {
-                    "internalType": "string",
-                    "name": "_status",
-                    "type": "string"
                 }
             ],
             "name": "setVehicleInfo",
@@ -483,7 +513,7 @@ const connectContract = async () => {
             "type": "function"
         }
     ]
-    const Address = "0xd9145CCE52D386f254917e481eB44e9943F39138";
+    const Address = "0xcD289b334Abe3020B6C4E9b1fC33B202C7E552B1";
     window.web3 = await new Web3(window.ethereum);
     window.contract = await new window.web3.eth.Contract(ABI, Address);
 }
@@ -495,4 +525,7 @@ const readContract = async () => {
     document.querySelector('#dataArea').innerHTML = "Your city is " + data;
 }
 
-
+btn_okNotification.addEventListener('click', function() {
+    document.querySelector('.Notification').style.display = "none";
+    
+})

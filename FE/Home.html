@@ -13,7 +13,7 @@
 <body>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
     <div style="width: 100%">
-        <blockquote class="blockquote text-center">
+        <blockquote class="blockquote text-center" style="position: relative; bottom: 100px">
             <p class="mb-0 font_title">Welcome to the Smart Vehicle Ownership Information Verification website</p>
             <!-- <footer class="blockquote-footer font_text">Please choose 1 of the 3 functions below</footer> -->
             <p id="addressAccount"></p>
@@ -26,13 +26,13 @@
                     <a href="SetOwnerInfo.html" class="btn btn-primary btn_page">Register now</a>
                 </div>
             </div>
-            <div class="card text-center card_info" style="width: 400px;">
+            <!-- <div class="card text-center card_info" style="width: 400px;">
                 <div class="card-body">
                     <h5 class="card-title font_title">Vehicle Information</h5>
                     <p class="card-text font_text">Register your vehicle information by clicking the button below</p>
                     <a href="#" class="btn btn-primary btn_page">Register now</a>
                 </div>
-            </div>
+            </div> -->
             <div class="card text-center card_info" style="width: 400px;">
                 <div class="card-body">
                     <h5 class="card-title font_title">Register Ownership</h5>
@@ -42,12 +42,19 @@
             </div>
             <div class="card text-center card_info" style="width: 400px;">
                 <div class="card-body">
-                    <h5 class="card-title font_title">Information Query</h5>
+                    <h5 class="card-title font_title">My confirmed contract</h5>
                     <p class="card-text font_text">See registered vehicle details and vehicle owner information here</p>
-                    <a href="#" class="btn btn-primary btn_page">See now</a>
+                    <a href="Querry.html" class="btn btn-primary btn_page">See now</a>
                 </div>
             </div>
         </div>
+    </div>
+    <button id="btn_create" class="btn_page mt-5" style="color: #FFF;line-height: 50px;" type="button">Create contract</button>
+    <div class="Notification">
+        <h1 class="font_title">Notification</h1>
+        <p class="font_text" id="p_notification" style="font-size: 18px"></p>
+        <p class="font_text" id="p_txHash" style="font-size: 18px"></p>
+        <button id="ok_notification" class="btn_page mt-5" style="color: #FFF" type="button">OK</button>
     </div>
     <script src="../BE/connect.js"></script>
     <script>
@@ -57,6 +64,19 @@
         } else {
             addressAccount.innerHTML = "Not connected to any account.";
         }
+
+        document.querySelector('#btn_create').addEventListener('click', function() {
+            contract.methods.createContract(connectedAccount).send({from: connectedAccount}, (error, txHash) => {
+                if (error) {
+                    alert('Lỗi: ' + error);
+                } else {
+                    document.querySelector('.Notification').style.display = "block";
+                    document.querySelector('#p_notification').innerHTML = 'Contract authentication successful';
+                    document.querySelector('#p_txHash').innerHTML = 'TxHash:\n' + txHash;
+                    // window.location.replace("Querry.html");
+                }
+            });
+        });
     </script>
 </body>
 
